@@ -1,0 +1,18 @@
+{
+  "dataset": {
+    "train_file": "datasets/babylm/released-2025/train.parquet",
+    "selection_file": "datasets/babylm/released-2025/selection.parquet",
+    "reporting_file": "datasets/babylm/released-2025/reporting.parquet"
+  },
+  "trunk_parameters": 20000,
+  "context_events": 12,
+  "batch_windows": 2,
+  "passes": 0.01,
+  "seeds": 2,
+  "baseline_seeds": 1,
+  "lookahead_horizon": 1,
+  "root_seed": 20260925,
+  "corpus_characters": 100000,
+  "mauve": true,
+  "receiver_context": "word"
+}
