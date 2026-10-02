@@ -217,9 +217,16 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# Inputs & Generated Results
-datasets/
-artifacts
+# Inputs excl manifest
+datasets/babylm/released-2025/*
+!datasets/babylm/released-2025/manifest.json
+
+# Generated Results
+artifacts/
+*.tar.zst
+*.tar.zst.sha256
+*.tar.zst.part-*
+upload-*.json
 
 # Remote configuration
 config/remote.json

@@ -1,0 +1,123 @@
+{
+  "assignment": "official train/dev/test preserved",
+  "grouping": "consecutive fixed-line computational contexts; not original documents",
+  "lines_per_group": 64,
+  "original_document_disjointness": false,
+  "outputs": {
+    "reporting": {
+      "archive_sha256": "12bd1c9c89f4f82156feb71b287d47f713429ee1292e938c6ab463a882816cef",
+      "file": "reporting.parquet",
+      "publisher_url": "https://osf.io/download/ftwu3/",
+      "sha256": "0bedf46973e52429417c569f3bbcd8f633a555c697c3e01753cc08af0f5ea226",
+      "sources": {
+        "bnc_spoken": {
+          "groups": 1407,
+          "lines": 90000,
+          "utf8_bytes": 4889225
+        },
+        "childes": {
+          "groups": 8438,
+          "lines": 540000,
+          "utf8_bytes": 14707424
+        },
+        "gutenberg": {
+          "groups": 860,
+          "lines": 55000,
+          "utf8_bytes": 13296106
+        },
+        "open_subtitles": {
+          "groups": 5391,
+          "lines": 345000,
+          "utf8_bytes": 10388196
+        },
+        "simple_wiki": {
+          "groups": 938,
+          "lines": 60000,
+          "utf8_bytes": 7618762
+        },
+        "switchboard": {
+          "groups": 313,
+          "lines": 20000,
+          "utf8_bytes": 823158
+        }
+      }
+    },
+    "selection": {
+      "archive_sha256": "b5af75aeb1ee5a36f65ee98f316fdae73b16a0ba3767cca3f3dfa5eaac2dc621",
+      "file": "selection.parquet",
+      "publisher_url": "https://osf.io/download/uyd7v/",
+      "sha256": "c776240f55294c59e46369b05055110a34e936e7b0b5110ac8b9eaec4e4dcb6a",
+      "sources": {
+        "bnc_spoken": {
+          "groups": 2032,
+          "lines": 130000,
+          "utf8_bytes": 6539125
+        },
+        "childes": {
+          "groups": 8128,
+          "lines": 520153,
+          "utf8_bytes": 14684091
+        },
+        "gutenberg": {
+          "groups": 1016,
+          "lines": 65000,
+          "utf8_bytes": 15605575
+        },
+        "open_subtitles": {
+          "groups": 5860,
+          "lines": 375000,
+          "utf8_bytes": 11029539
+        },
+        "simple_wiki": {
+          "groups": 938,
+          "lines": 60000,
+          "utf8_bytes": 8170440
+        },
+        "switchboard": {
+          "groups": 282,
+          "lines": 18000,
+          "utf8_bytes": 724013
+        }
+      }
+    },
+    "train": {
+      "archive_sha256": "37a92db26f391e436febd592453084394d0c0830c8c9bdb30be781e440cdc826",
+      "file": "train.parquet",
+      "publisher_url": "https://osf.io/download/ywea7/",
+      "sha256": "e44683af8b6756c8cbd910cdc00af0beab53e5baa4b7773bc490550a3da8bfb0",
+      "sources": {
+        "bnc_spoken": {
+          "groups": 12797,
+          "lines": 818961,
+          "utf8_bytes": 40356693
+        },
+        "childes": {
+          "groups": 90469,
+          "lines": 5790000,
+          "utf8_bytes": 157062843
+        },
+        "gutenberg": {
+          "groups": 10563,
+          "lines": 676014,
+          "utf8_bytes": 145494856
+        },
+        "open_subtitles": {
+          "groups": 54610,
+          "lines": 3495000,
+          "utf8_bytes": 106149427
+        },
+        "simple_wiki": {
+          "groups": 10109,
+          "lines": 646969,
+          "utf8_bytes": 85323360
+        },
+        "switchboard": {
+          "groups": 2528,
+          "lines": 161740,
+          "utf8_bytes": 6586033
+        }
+      }
+    }
+  },
+  "release": "BabyLM-2025-text"
+}

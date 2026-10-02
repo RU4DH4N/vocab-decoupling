@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: Chetham
+    given-names: Ruadhan
+    orcid: https://orcid.org/0009-0009-1305-700X
+title: "A Modular Approach to Language Model Vocabularies: Code Repository"
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/RU4DH4N/vocab-decoupling"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23102847
+    description: Checkpoints and evaluation results (v1.0.0)

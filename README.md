@@ -20,17 +20,50 @@ python3.13 -m venv .venv && source .venv/bin/activate
 python -m pip install -r requirements.lock
 ```
 
+## Data
+
+The data is the official BabyLM 2025 text release. Download the three archives from the OSF links in
+`data/released_babylm.py`, then:
+
+```sh
+python -m data.released_babylm --train-archive train_100M.zip --dev-archive dev.zip \
+    --test-archive test.zip --output datasets/babylm/released-2025 --lines-per-group 64
+```
+
+This writes the parquet files and `manifest.json` (committed, with their checksums).
+
+| Split | Official split |
+|---|---|
+| `train` | train |
+| `selection` | dev |
+| `reporting` | test |
+
+Each source file is cut into consecutive groups of 64 lines; the last group of each source may be shorter.
+Groups are computational contexts, not original documents; we make no claim that the official splits are
+disjoint at the document level.
+
+| Source | Origin |
+|---|---|
+| `bnc_spoken` | British National Corpus, spoken portion |
+| `childes` | CHILDES, child-directed speech |
+| `gutenberg` | Project Gutenberg (children's stories) |
+| `open_subtitles` | OpenSubtitles |
+| `simple_wiki` | Simple English Wikipedia |
+| `switchboard` | Switchboard Dialog Act Corpus |
+
+Each source keeps its original licence; see the BabyLM 2025 release for terms.
+
 ## Claims
 
-| Claim | Entry point |
-|---|---|
-| C1. A frozen trunk's continuous messages carry information receivers can use beyond their own history | `claims/continuous_communication.py` |
-| C2. Useful communication needs a learned layerwise protocol, not just input-layer injection or per-layer cross attention | `claims/learned_protocol.py` |
-| C3. Correspondence must be bootstrapped with explicit alignment; likelihood can then preserve it | `claims/correspondence_bootstrap.py` |
-| C4. Sender and receiver can run on different clocks | `claims/independent_clocks.py` |
-| C5. Causally rolled future messages improve realization of the current event | `claims/planning_ahead.py` |
-| C6. Fresh receivers can attach to the same frozen trunk | `claims/receiver_replacement.py` |
-| C7. Quality gap to BPE and to the released BabyLlama, and the cost of replacing a receiver | `claims/remote_hypothesis.py` |
+| Assumption before running | Result | Entry point |
+|---|---|---|
+| C1. The trunk's messages carry information the receiver can't get on its own | Supported | `claims/continuous_communication.py` |
+| C2. A learned layer-by-layer protocol beats simpler ways of passing messages | Supported | `claims/learned_protocol.py` |
+| C3. Receivers need explicit alignment to learn which message to read | Partly supported | `claims/correspondence_bootstrap.py` |
+| C4. Trunk and receiver can run on different clocks | Supported | `claims/independent_clocks.py` |
+| C5. Predicted future messages improve spelling of the current word | Not supported | `claims/planning_ahead.py` |
+| C6. New receivers can attach to a frozen trunk | Supported | `claims/receiver_replacement.py` |
+| C7. How it compares to BPE and BabyLlama, and what a new receiver costs | Measured | `claims/remote_hypothesis.py` |
 
 `claims/active.py` runs all of them in one graph.
 
@@ -45,3 +78,22 @@ python claims/planning_ahead.py --config config/smoke.json --split selection --r
 turns the results into tables with confidence intervals. Results are written to `artifacts/<config>/claims/`.
 `config/smoke.json`, `config/pilot.json` and `config/paper.json` are the same design at three scales; everything
 else is derived and recorded in `artifacts/<config>/design.json`. Evaluate on `--split reporting` once, at the end.
+
+## Artifacts
+
+Generated artifacts are too large for git and are archived on Zenodo: [10.5281/zenodo.23102847](https://doi.org/10.5281/zenodo.23102847)
+
+The archive is split into 19 parts; download all the files into the repository root.
+
+To check them:
+
+```sh
+[ "$(cat vocab-decoupling-artifacts-v1.0.0.tar.zst.part-* | shasum -a 256 | cut -d' ' -f1)" = \
+  "$(cut -d' ' -f1 vocab-decoupling-artifacts-v1.0.0.tar.zst.sha256)" ] && echo OK || echo MISMATCH
+```
+
+To restore `artifacts/`:
+
+```sh
+cat vocab-decoupling-artifacts-v1.0.0.tar.zst.part-* | zstd -d -c | tar -x
+```
