@@ -1,5 +1,7 @@
 # Vocab Decoupling Research
 
+[![DOI](https://zenodo.org/badge/1400919324.svg)](https://doi.org/10.5281/zenodo.23106806)
+
 ## Layout
 
 | Directory | Contents |
