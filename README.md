@@ -93,19 +93,19 @@ turns them into tables.
 
 ## Artifacts
 
-Generated artifacts are too large for git and are archived on Zenodo: [10.5281/zenodo.23102847](https://doi.org/10.5281/zenodo.23102847)
+Generated artifacts are too large for git and are archived on Zenodo: [10.5281/zenodo.23102846](https://doi.org/10.5281/zenodo.23102846)
 
 The archive is split into 19 parts; download all the files into the repository root.
 
 To check them:
 
 ```sh
-[ "$(cat vocab-decoupling-artifacts-v1.0.0.tar.zst.part-* | shasum -a 256 | cut -d' ' -f1)" = \
-  "$(cut -d' ' -f1 vocab-decoupling-artifacts-v1.0.0.tar.zst.sha256)" ] && echo OK || echo MISMATCH
+[ "$(cat vocab-decoupling-artifacts-v1.1.0.tar.zst.part-* | shasum -a 256 | cut -d' ' -f1)" = \
+  "$(cut -d' ' -f1 vocab-decoupling-artifacts-v1.1.0.tar.zst.sha256)" ] && echo OK || echo MISMATCH
 ```
 
 To restore `artifacts/`:
 
 ```sh
-cat vocab-decoupling-artifacts-v1.0.0.tar.zst.part-* | zstd -d -c | tar -x
+cat vocab-decoupling-artifacts-v1.1.0.tar.zst.part-* | zstd -d -c | tar -x
 ```

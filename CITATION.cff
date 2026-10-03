@@ -6,11 +6,11 @@ authors:
     given-names: Ruadhan
     orcid: https://orcid.org/0009-0009-1305-700X
 title: "A Modular Approach to Language Model Vocabularies: Code Repository"
-version: 1.0.0
+version: 1.1.0
 doi: 10.5281/zenodo.23106806
 license: MIT
 repository-code: "https://github.com/RU4DH4N/vocab-decoupling"
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.23102847
-    description: Checkpoints and evaluation results (v1.0.0)
+    value: 10.5281/zenodo.23102846
+    description: Checkpoints and evaluation results (all versions)
