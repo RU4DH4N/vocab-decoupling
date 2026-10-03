@@ -69,6 +69,13 @@ Each source keeps its original licence; see the BabyLM 2025 release for terms.
 
 `claims/active.py` runs all of them in one graph.
 
+## Additive Claims
+
+| Assumption before running | Result | Entry point |
+|---|---|---|
+| C8. Receiver size doesn't need to scale with trunk size | Supported | `claims/receiver_scaling.py` |
+| C9. The BPE receiver's poor result came from the 16k vocabulary it was given rather than from BPE itself | Largely supported | `claims/receiver_vocabulary.py` |
+
 ## Running a claim
 
 ```sh
@@ -80,6 +87,9 @@ python claims/planning_ahead.py --config config/smoke.json --split selection --r
 turns the results into tables with confidence intervals. Results are written to `artifacts/<config>/claims/`.
 `config/smoke.json`, `config/pilot.json` and `config/paper.json` are the same design at three scales; everything
 else is derived and recorded in `artifacts/<config>/design.json`. Evaluate on `--split reporting` once, at the end.
+C8 runs once per trunk config (`config/trunk-10m.json`, `config/trunk-20m.json`, `config/paper.json`) and C9 on
+`config/paper.json`; `python -m postprocess.extension_analysis --scaling <outputs> --vocabulary <output> --split <split> --report <folder>`
+turns them into tables.
 
 ## Artifacts
 
